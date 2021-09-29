@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -25,7 +26,7 @@ namespace WebPi.Controllers
             if (response.IsSuccessStatusCode)
             {
                 var data = await response.Content.ReadAsStringAsync();
-                var table = JsonConvert.DeserializeObject<IEnumerable<Achat>>(data);
+                IEnumerable<Achat> table = JsonConvert.DeserializeObject<IEnumerable<Achat>>(data);
                 
                 ViewBag.result = table;
             }
@@ -71,9 +72,63 @@ namespace WebPi.Controllers
             {
                 // TODO: Add insert logic here
                 Achat a = new Achat();
-                a.titre = collection.Get(1);
-                a.description = collection.Get(2);
+                a.titre = collection.Get("titre");
+                a.description = collection.Get("description");
                 a.date = DateTime.Now;
+                a.phone = collection.Get("phone");
+                a.name = collection.Get("name");
+                a.status = collection.Get("status");
+                a.type = collection.Get("type");
+                a.address = collection.Get("address");
+                a.city = collection.Get("city");
+                a.email = collection.Get("email");
+                a.phone = collection.Get("phone");
+                a.bathrooms = int.Parse(collection.Get("bathrooms"));
+                a.bedrooms = int.Parse(collection.Get("bedrooms"));
+                a.areas = int.Parse(collection.Get("areas"));
+                a.price = double.Parse(collection.Get("price"));
+                a.age = collection.Get("age");
+                if (!string.IsNullOrEmpty(collection["elevator"]))
+                {
+                    a.elevator = true;
+                }
+                if (!string.IsNullOrEmpty(collection["internet"]))
+                {
+                    a.internet = true;
+                }
+                if (!string.IsNullOrEmpty(collection["ac"]))
+                {
+                    a.ac = true;
+                }
+                if (!string.IsNullOrEmpty(collection["parking"]))
+                {
+                    a.parking = true;
+                }
+                if (!string.IsNullOrEmpty(collection["pool"]))
+                {
+                    a.pool = true;
+                }
+                if (Request.Files.Count > 0)
+                {
+                    try
+                    {
+                        HttpFileCollectionBase files = Request.Files;
+
+                        HttpPostedFileBase file = files[0];
+                        string fileName = file.FileName;
+
+                        // create the uploads folder if it doesn't exist
+                        Directory.CreateDirectory(Server.MapPath("~/UploadedFiles/"));
+                        string path = Path.Combine(Server.MapPath("~/UploadedFiles/"), fileName);
+                        file.SaveAs(path);
+                        a.photo = fileName;
+                    }
+                    catch (Exception e)
+                    {
+                        
+                    }
+                }
+
                 var stringContent = new StringContent(JsonConvert.SerializeObject(a), Encoding.UTF8, "application/json");
 
                 HttpClient client = new HttpClient();

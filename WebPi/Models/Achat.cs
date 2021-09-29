@@ -34,5 +34,25 @@ namespace WebPi.Models
 		public double price { get; set; }
 		[JsonProperty("photo")]
 		public string photo { get; set; }
+		[JsonProperty("status")]
+		public string status { get; set; }
+		[JsonProperty("ac")]
+		public bool ac { get; set; }
+		[JsonProperty("internet")]
+		public bool internet { get; set; }
+		[JsonProperty("parking")]
+		public bool parking { get; set; }
+		[JsonProperty("name")]
+		public string name { get; set; }
+		[JsonProperty("email")]
+		public string email { get; set; }
+		[JsonProperty("phone")]
+		public string phone { get; set; }
+		[JsonProperty("age")]
+		public string age { get; set; }
+		[JsonProperty("address")]
+		public string address { get; set; }
+		[JsonProperty("city")]
+		public string city { get; set; }
 	}
 }

@@ -12,15 +12,15 @@
 
                     <div class="pbw-flex-1">
                         <div class="pbw-flex-thumb">
-                            <img src="assets/img/agency-1.png" class="img-fluid" alt="">
+                            <img src=@Url.Content("~/UploadedFiles/"+@ViewBag.result.photo) style="height: 100px;width: 100px" class="img-fluid" alt="">
                         </div>
                     </div>
 
                     <div class="pbw-flex">
                         <div class="prt-detail-title-desc">
-                            <span class="prt-types sale">For Sale</span>
+                            <span class="prt-types sale">@ViewBag.result.status</span>
                             <h3>@ViewBag.result.titre</h3>
-                            <span><i class="lni-map-marker"></i> 778 Country St. Panama City, FL</span>
+                            <span><i class="lni-map-marker"></i> @ViewBag.result.address, @ViewBag.result.city</span>
                             <h3 class="prt-price-fix">$@ViewBag.result.price</h3>
                             <div class="list-fx-features">
                                 <div class="listing-card-info-icon">
@@ -48,7 +48,7 @@
         <div class="row">
 
             <!-- property main detail -->
-            <div class="col-lg-8 col-md-12 col-sm-12">
+            <div class="col-lg-12 col-md-12 col-sm-12">
 
                 <!-- Single Block Wrap -->
                 <div class="property_block_wrap style-2">
@@ -59,12 +59,12 @@
                     <div id="clOne" class="panel-collapse collapse show" aria-labelledby="clOne">
                         <div class="block-body">
                             <ul class="deatil_features">
-                                <li><strong>Bedrooms:</strong>@ViewBag.result.bedrooms Beds</li>
-                                <li><strong>Bathrooms:</strong>@ViewBag.result.bathrooms Bath</li>
+                                <li><strong>Bedrooms:</strong>@ViewBag.result.bedrooms </li>
+                                <li><strong>Bathrooms:</strong>@ViewBag.result.bathrooms </li>
                                 <li><strong>Areas:</strong>@ViewBag.result.areas m²</li>
                                 <li><strong>Garage</strong>@ViewBag.result.garage</li>
                                 <li><strong>Property Type:</strong>@ViewBag.result.type</li>
-                                <li><strong>Year:</strong>Built 1982</li>
+                                <li><strong>Age:</strong>@ViewBag.result.age</li>
                                 @if (@ViewBag.result.pool == true)
                                 {
                                     <li>
@@ -84,6 +84,30 @@
                                 else
                                 {
                                     <li><strong>Elevetor:</strong>No</li>
+                                }
+                                @if (@ViewBag.result.ac == true)
+                                {
+                                    <li><strong>A/C:</strong>Yes</li>
+                                }
+                                else
+                                {
+                                    <li><strong>A/C:</strong>No</li>
+                                }
+                                @if (@ViewBag.result.internet == true)
+                                {
+                                    <li><strong>Internet:</strong>Yes</li>
+                                }
+                                else
+                                {
+                                    <li><strong>Internet:</strong>No</li>
+                                }
+                                @if (@ViewBag.result.parking == true)
+                                {
+                                    <li><strong>Parking:</strong>Yes</li>
+                                }
+                                else
+                                {
+                                    <li><strong>Parking:</strong>No</li>
                                 }
 
                             </ul>
@@ -105,6 +129,23 @@
                     </div>
                 </div>
 
-        </div>
+                <div class="property_block_wrap style-2">
+
+                    <div class="property_block_wrap_header">
+                        <a data-bs-toggle="collapse" data-parent="#dsrp" data-bs-target="#clTwo" aria-controls="clTwo" href="javascript:void(0);" aria-expanded="true"><h4 class="property_block_title">Contact</h4></a>
+                    </div>
+                    <div id="clTwo" class="panel-collapse collapse show">
+                        <div class="block-body">
+                            <h6>Name:</h6>
+                            <p>@ViewBag.result.name</p>
+                            <h6>Email:</h6>
+                            <p>@ViewBag.result.email</p>
+                            <h6>Phone:</h6>
+                            <p>@ViewBag.result.phone</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
     </div>
 </section>
