@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+
+<section class="gray-simple rtl p-0">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-11 col-md-12">
+
+                <div class="property_block_wrap style-3">
+
+                    <div class="pbw-flex-1">
+                        <div class="pbw-flex-thumb">
+                            <img src="assets/img/agency-1.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+
+                    <div class="pbw-flex">
+                        <div class="prt-detail-title-desc">
+                            <span class="prt-types sale">For Sale</span>
+                            <h3>@ViewBag.result.titre</h3>
+                            <span><i class="lni-map-marker"></i> 778 Country St. Panama City, FL</span>
+                            <h3 class="prt-price-fix">$@ViewBag.result.price</h3>
+                            <div class="list-fx-features">
+                                <div class="listing-card-info-icon">
+                                    <div class="inc-fleat-icon"><img src=@Url.Content("~/assets/img/bed.svg") width="13" alt=""></div>@ViewBag.result.bedrooms Beds
+                                </div>
+                                <div class="listing-card-info-icon">
+                                    <div class="inc-fleat-icon"><img src=@Url.Content("~/assets/img/bathtub.svg") width="13" alt=""></div>@ViewBag.result.bathrooms Bath
+                                </div>
+                                <div class="listing-card-info-icon">
+                                    <div class="inc-fleat-icon"><img src=@Url.Content("~/assets/img/move.svg") width="13" alt=""></div>@ViewBag.result.areas sqft
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="gray-simple min">
+    <div class="container">
+        <div class="row">
+
+            <!-- property main detail -->
+            <div class="col-lg-8 col-md-12 col-sm-12">
+
+                <!-- Single Block Wrap -->
+                <div class="property_block_wrap style-2">
+
+                    <div class="property_block_wrap_header">
+                        <a data-bs-toggle="collapse" data-parent="#features" data-bs-target="#clOne" aria-controls="clOne" href="javascript:void(0);" aria-expanded="false"><h4 class="property_block_title">Detail &amp; Features</h4></a>
+                    </div>
+                    <div id="clOne" class="panel-collapse collapse show" aria-labelledby="clOne">
+                        <div class="block-body">
+                            <ul class="deatil_features">
+                                <li><strong>Bedrooms:</strong>@ViewBag.result.bedrooms Beds</li>
+                                <li><strong>Bathrooms:</strong>@ViewBag.result.bathrooms Bath</li>
+                                <li><strong>Areas:</strong>@ViewBag.result.areas m²</li>
+                                <li><strong>Garage</strong>@ViewBag.result.garage</li>
+                                <li><strong>Property Type:</strong>@ViewBag.result.type</li>
+                                <li><strong>Year:</strong>Built 1982</li>
+                                @if (@ViewBag.result.pool == true)
+                                {
+                                    <li>
+                                        <strong>Swimming Pool:</strong>Yes
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <strong>Swimming Pool:</strong>No
+                                    </li>
+                                }
+                                @if (@ViewBag.result.elevator == true)
+                                {
+                                    <li><strong>Elevetor:</strong>Yes</li>
+                                }
+                                else
+                                {
+                                    <li><strong>Elevetor:</strong>No</li>
+                                }
+
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Single Block Wrap -->
+                <div class="property_block_wrap style-2">
+
+                    <div class="property_block_wrap_header">
+                        <a data-bs-toggle="collapse" data-parent="#dsrp" data-bs-target="#clTwo" aria-controls="clTwo" href="javascript:void(0);" aria-expanded="true"><h4 class="property_block_title">Description</h4></a>
+                    </div>
+                    <div id="clTwo" class="panel-collapse collapse show">
+                        <div class="block-body">
+                            <p>@ViewBag.result.description</p>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+</section>
