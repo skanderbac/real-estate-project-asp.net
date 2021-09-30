@@ -9,7 +9,6 @@
     <div class="col-lg-7 col-md-10 text-center">
         <div class="sec-heading center">
             <h2>Featured Property For Sale</h2>
-            <p>@Html.ActionLink("poster votre maison/appartement", "Create")</p>
         </div>
     </div>
 </div>
@@ -34,7 +33,7 @@
                         <div class="filter-search-box">
                             <div class="form-group">
                                 <div class="input-with-icon">
-                                    <input type="text" class="form-control" placeholder="Search by space name…">
+                                    <input type="text" class="form-control" id="recherche" placeholder="Search by space name…">
                                     <i class="ti-search"></i>
                                 </div>
                             </div>
@@ -46,7 +45,7 @@
                             <div class="single_search_boxed">
                                 <div class="widget-boxed-header">
                                     <h4>
-                                        <a href="#where" data-bs-toggle="collapse" aria-expanded="false" role="button" class="collapsed">Where<span class="selected">Chicago</span></a>
+                                        <a href="#where" data-bs-toggle="collapse" aria-expanded="false" role="button" class="collapsed">Where<span class="selected">Nabeul</span></a>
                                     </h4>
 
                                 </div>
@@ -56,42 +55,18 @@
                                         <div class="single_filter_card">
                                             <div class="card-body pt-0">
                                                 <div class="inner_widget_link">
-                                                    <ul class="no-ul-list filter-list">
+                                                    <ul class="no-ul-list filter-list" id="city">
                                                         <li>
-                                                            <input id="b1" class="radio-custom" name="where" type="radio">
-                                                            <label for="b1" class="radio-custom-label">Atlanta</label>
+                                                            <input id="b1" class="radio-custom"  name="where"  type="radio">
+                                                            <label for="b1" class="radio-custom-label">Tunis</label>
                                                         </li>
                                                         <li>
-                                                            <input id="b2" class="radio-custom" name="where" type="radio">
-                                                            <label for="b2" class="radio-custom-label">Austin</label>
+                                                            <input id="b2" class="radio-custom"  name="where" type="radio">
+                                                            <label for="b2" class="radio-custom-label">Nabeul</label>
                                                         </li>
                                                         <li>
-                                                            <input id="b3" class="radio-custom" name="where" type="radio">
-                                                            <label for="b3" class="radio-custom-label">Boston</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="b4" class="radio-custom" name="where" type="radio" checked="">
-                                                            <label for="b4" class="radio-custom-label">Chicago</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="b5" class="radio-custom" name="where" type="radio">
-                                                            <label for="b5" class="radio-custom-label">Dallas</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="b6" class="radio-custom" name="where" type="radio">
-                                                            <label for="b6" class="radio-custom-label">Denver</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="b7" class="radio-custom" name="where" type="radio">
-                                                            <label for="b7" class="radio-custom-label">Houston</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="b8" class="radio-custom" name="where" type="radio">
-                                                            <label for="b8" class="radio-custom-label">Jacksonville</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="b9" class="radio-custom" name="where" type="radio">
-                                                            <label for="b9" class="radio-custom-label">Los Angeles</label>
+                                                            <input id="b3" class="radio-custom"  name="where" type="radio">
+                                                            <label for="b3" class="radio-custom-label">Sousse</label>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -121,28 +96,12 @@
                                                             <label for="c1" class="radio-custom-label">House</label>
                                                         </li>
                                                         <li>
-                                                            <input id="c2" class="radio-custom" name="ptype" type="radio">
-                                                            <label for="c2" class="radio-custom-label">Office Desk</label>
-                                                        </li>
-                                                        <li>
                                                             <input id="c3" class="radio-custom" name="ptype" type="radio">
                                                             <label for="c3" class="radio-custom-label">Villa</label>
                                                         </li>
                                                         <li>
                                                             <input id="c4" class="radio-custom" name="ptype" type="radio" checked="">
                                                             <label for="c4" class="radio-custom-label">Apartment</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="c5" class="radio-custom" name="ptype" type="radio">
-                                                            <label for="c5" class="radio-custom-label">Condo</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="c6" class="radio-custom" name="ptype" type="radio">
-                                                            <label for="c6" class="radio-custom-label">Denver</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="c7" class="radio-custom" name="ptype" type="radio">
-                                                            <label for="c7" class="radio-custom-label">Studio</label>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -199,7 +158,7 @@
                                 </div>
                             </div>
 
-                            <!-- Single Search -->
+
                             <div class="single_search_boxed">
                                 <div class="widget-boxed-header">
                                     <h4>
@@ -250,130 +209,8 @@
                                 </div>
                             </div>
 
-                            <!-- Single Search -->
-                            <div class="single_search_boxed">
-                                <div class="widget-boxed-header">
-                                    <h4>
-                                        <a href="#mood" data-bs-toggle="collapse" aria-expanded="false" role="button" class="collapsed">Mood<span class="selected">Any Mood</span></a>
-                                    </h4>
-
-                                </div>
-                                <div class="widget-boxed-body collapse" id="mood" data-parent="#mood">
-                                    <div class="side-list no-border">
-                                        <!-- Single Filter Card -->
-                                        <div class="single_filter_card">
-                                            <div class="card-body pt-0">
-                                                <div class="inner_widget_link">
-                                                    <ul class="no-ul-list filter-list">
-                                                        <li>
-                                                            <input id="f1" class="radio-custom" name="moods" type="radio">
-                                                            <label for="f1" class="radio-custom-label">Any Mood</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="f2" class="radio-custom" name="moods" type="radio">
-                                                            <label for="f2" class="radio-custom-label">Professional</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="f3" class="radio-custom" name="moods" type="radio">
-                                                            <label for="f3" class="radio-custom-label">Essentials</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="f4" class="radio-custom" name="moods" type="radio" checked="">
-                                                            <label for="f4" class="radio-custom-label">Unique</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="f5" class="radio-custom" name="moods" type="radio">
-                                                            <label for="f5" class="radio-custom-label">Lively</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="f6" class="radio-custom" name="moods" type="radio">
-                                                            <label for="f6" class="radio-custom-label">Luxe</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="f7" class="radio-custom" name="moods" type="radio">
-                                                            <label for="f7" class="radio-custom-label">Luxe</label>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Single Search -->
-                            <div class="single_search_boxed">
-                                <div class="widget-boxed-header">
-                                    <h4>
-                                        <a href="#ameneties" data-bs-toggle="collapse" aria-expanded="false" role="button" class="collapsed">Ameneties<span class="selected">ADA Compliant</span></a>
-                                    </h4>
-
-                                </div>
-                                <div class="widget-boxed-body collapse" id="ameneties" data-parent="#ameneties">
-                                    <div class="side-list no-border">
-                                        <!-- Single Filter Card -->
-                                        <div class="single_filter_card">
-                                            <div class="card-body pt-0">
-                                                <div class="inner_widget_link">
-                                                    <ul class="no-ul-list filter-list">
-                                                        <li>
-                                                            <input id="g1" class="checkbox-custom" name="ADA" type="checkbox" checked="">
-                                                            <label for="g1" class="checkbox-custom-label">ADA Compliant</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="g2" class="checkbox-custom" name="Parking" type="checkbox">
-                                                            <label for="g2" class="checkbox-custom-label">Parking Options</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="g3" class="checkbox-custom" name="Coffee" type="checkbox">
-                                                            <label for="g3" class="checkbox-custom-label">Coffee Provided</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="g4" class="checkbox-custom" name="Mother" type="checkbox">
-                                                            <label for="g4" class="checkbox-custom-label">Mother's Room</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="g5" class="checkbox-custom" name="Outdoor" type="checkbox">
-                                                            <label for="g5" class="checkbox-custom-label">Outdoor Space</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="g6" class="checkbox-custom" name="Pet" type="checkbox">
-                                                            <label for="g6" class="checkbox-custom-label">Pet Friendly</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="g7" class="checkbox-custom" name="Beauty" type="checkbox">
-                                                            <label for="g7" class="checkbox-custom-label">Beauty &amp; Message</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="g8" class="checkbox-custom" name="Bike" type="checkbox">
-                                                            <label for="g8" class="checkbox-custom-label">Bike Parking</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="g9" class="checkbox-custom" name="Phone" type="checkbox">
-                                                            <label for="g9" class="checkbox-custom-label">Phone Line</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="g11" class="checkbox-custom" name="Private" type="checkbox">
-                                                            <label for="g11" class="checkbox-custom-label">Private Areas</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="g12" class="checkbox-custom" name="Free" type="checkbox">
-                                                            <label for="g12" class="checkbox-custom-label">Free WiFi</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="g13" class="checkbox-custom" name="Swiming" type="checkbox">
-                                                            <label for="g13" class="checkbox-custom-label">Swiming Pool</label>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -394,7 +231,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" id="result">
 
                 @foreach (var item in @ViewBag.result)
                 {
@@ -449,14 +286,104 @@
                         </div>
                     </div>
                 }
-                
-                
+
+
             </div>
 
         </div>
 
     </div>
 </div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#recherche").keyup(function () {
+            LoadData("a");
+            console.log($("#recherche").val())
+        });
+        $("#city").click(function () {
+            if ($('#b1').is(':checked')) {
+                LoadData("Tunis");
+                console.log("tunis")
+            }
+            if ($('#b2').is(':checked')) {
+                LoadData("Nabeul");
+            }
+            if ($('#b3').is(':checked')) {
+                LoadData("Sousse");
+            }
+        })
+        
+    });
+
+    function LoadData(city) {
+            $("#result div").remove();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Searchs")',
+                dataType: 'json',
+                data: {
+                    titre: $("#recherche").val(),
+                    city: city
+                },
+                success: function (data) {
+                    console.log(data)
+                    $.each(data, function (i, item) {
+                        console.log(item.description)
+                        var rows= "<div class='col-lg-12 col-md-12'>"+
+                        "<div class='property-listing property-1'>"+
+                            "<div class='listing-img-wrapper'>"+
+                                "<a href='/Achat/Details/${item.id}'>"+
+                                    "<img src=@Url.Content("~/assets/img/p-1.jpg") class='img-fluid mx-auto' alt=''>"+
+                                "</a>"+
+                            "</div>"+
+                            "<div class='listing-content'>"+
+                                "<div class='listing-detail-wrapper-box'>"+
+                                    "<div class='listing-detail-wrapper'>"+
+                                        "<div class='listing-short-detail'>"+
+                                            "<h4 class='listing-name'><a href='/Achat/Details/${item.id}'>"+item.titre+"</a></h4>"+
+                                            "<span class='prt-types sale'>"+item.status+"</span>"+
+                                        "</div>"+
+                                        "<div class='list-price'>"+
+                                            "<h6 class='listing-card-info-price'>$"+item.price+"</h6>"+
+                                        "</div>"+
+                                    "</div>"+
+                                "</div>"+
+                                "<div class='price-features-wrapper'>"+
+                                    "<div class='list-fx-features'>"+
+                                        "<div class='listing-card-info-icon'>"+
+                                            "<div class='inc-fleat-icon'><img src=@Url.Content("~/assets/img/bed.svg") width='13' alt='></div>"+item.bedrooms+" Beds"+
+                                        "</div>"+
+                                        "<div class='listing-card-info-icon'>"+
+                                            "<div class='inc-fleat-icon'><img src=@Url.Content("~/assets/img/bathtub.svg") width='13' alt=''></div>"+item.bathrooms+" Bath"+
+                                        "</div>"+
+                                        "<div class='listing-card-info-icon'>"+
+                                            "<div class='inc-fleat-icon'><img src=@Url.Content("~/assets/img/move.svg") width='13' alt=''></div>"+item.areas+" m²"+
+                                        "</div>"+
+                                    "</div>"+
+                                "</div>"+
+                                "<div class='listing-footer-wrappe'>"+
+                                    "<div class='listing-locate'>"+
+                                        "<span class='listing-location'><i class='ti-location-pin'></i>"+item.address+","+ item.city+"</span>"
+                                    "</div>"+
+                                    "<div class='listing-detail-btn'>"+
+                                        "<a href='/Achat/Details/${item.id}' class='more-btn'>View</a>"+
+                                    "</div>"+
+                                "</div>"
+                            "</div>"+
+                        "</div>"+
+                    "</div>";
+                        $("#result").append(rows);
+                    });
+                }
+            });
+            return false;
+        }
+
+
+</script>
 
 <table class="table">
     <tr>
@@ -472,34 +399,36 @@
         <th>air</th>
         <th>pool</th>
         <th>price</th>
-        <th>photo</th>
     </tr>
 
     <tbody>
-        @foreach(var item in @ViewBag.result)
+        @foreach (var item in @ViewBag.result)
         {
-        <tr>
-            <td>@item.id</td>
-            <td>@item.titre</td>
-            <td>@item.description</td>
-            <td>@item.date</td>
-            <td>@item.bedrooms</td>
-            <td>@item.garage</td>
-            <td>@item.elevator</td>
-            <td>@item.bathrooms</td>
-            <td>@item.type</td>
-            <td>@item.areas m²</td>
-            <td>@item.pool</td>
-            <td>@item.price</td>
-            <td>@item.photo</td>
-            <td>
-                <form method="post" action="@Url.Action("Delete", "Achat")">
-                    <input type="hidden" name="id" value="@item.id" />
-                    <input value="Delete" type="submit" class="btn btn-danger">
-                </form>
-            </td>
-        </tr>
+            <tr>
+                <td>@item.id</td>
+                <td>@item.titre</td>
+                <td>@item.description</td>
+                <td>@item.date</td>
+                <td>@item.bedrooms</td>
+                <td>@item.garage</td>
+                <td>@item.elevator</td>
+                <td>@item.bathrooms</td>
+                <td>@item.type</td>
+                <td>@item.areas m²</td>
+                <td>@item.pool</td>
+                <td>@item.price</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Achat",new { item.id})" class="btn btn-info">Edit</a>
+                </td>
+                <td>
+                    <form method="post" action="@Url.Action("Delete", "Achat")">
+                        <input type="hidden" name="id" value="@item.id" />
+                        <input value="Delete" type="submit" class="btn btn-danger">
+                    </form>
+                </td>
+            </tr>
         }
 
     </tbody>
 </table>
+<p>@Html.ActionLink("poster votre maison/appartement", "Create")</p>

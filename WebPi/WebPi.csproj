@@ -168,6 +168,7 @@
     <Content Include="Views\Achat\Create.cshtml" />
     <Content Include="Views\Achat\Delete.cshtml" />
     <Content Include="Views\Achat\Details.cshtml" />
+    <Content Include="Views\Achat\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -88,6 +88,7 @@ namespace WebPi.Controllers
                 a.areas = int.Parse(collection.Get("areas"));
                 a.price = double.Parse(collection.Get("price"));
                 a.age = collection.Get("age");
+                a.garage = int.Parse(collection.Get("garage"));
                 if (!string.IsNullOrEmpty(collection["elevator"]))
                 {
                     a.elevator = true;
@@ -153,21 +154,113 @@ namespace WebPi.Controllers
         }
 
         // GET: Achat/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.GetAsync("http://localhost:8080/SpringMVC/servlet/getAchat/" + id);
+            response.EnsureSuccessStatusCode();
 
-            return View();
+            if (response.IsSuccessStatusCode)
+            {
+                var data = await response.Content.ReadAsStringAsync();
+                var a = JsonConvert.DeserializeObject<Achat>(data);
+
+                ViewBag.result = a;
+            }
+            else
+            {
+                ViewBag.result = "error";
+            }
+            return View(ViewBag.result);
         }
 
         // POST: Achat/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public async Task<ActionResult> Edit(int id, FormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
+                // TODO: Add insert logic here
+                Achat a = new Achat();
+                a.id = int.Parse(collection.Get("id"));
+                a.titre = collection.Get("titre");
+                a.description = collection.Get("description");
+                a.date = DateTime.Now;
+                a.phone = collection.Get("phone");
+                a.name = collection.Get("name");
+                a.status = collection.Get("status");
+                a.type = collection.Get("type");
+                a.address = collection.Get("address");
+                a.city = collection.Get("city");
+                a.email = collection.Get("email");
+                a.phone = collection.Get("phone");
+                a.bathrooms = int.Parse(collection.Get("bathrooms"));
+                a.bedrooms = int.Parse(collection.Get("bedrooms"));
+                a.areas = int.Parse(collection.Get("areas"));
+                a.price = double.Parse(collection.Get("price"));
+                a.age = collection.Get("age");
+                a.garage = int.Parse(collection.Get("garage"));
+                if (!string.IsNullOrEmpty(collection["elevator"]))
+                {
+                    a.elevator = true;
+                }
+                if (!string.IsNullOrEmpty(collection["internet"]))
+                {
+                    a.internet = true;
+                }
+                if (!string.IsNullOrEmpty(collection["ac"]))
+                {
+                    a.ac = true;
+                }
+                if (!string.IsNullOrEmpty(collection["parking"]))
+                {
+                    a.parking = true;
+                }
+                if (!string.IsNullOrEmpty(collection["pool"]))
+                {
+                    a.pool = true;
+                }
+                if (Request.Files.Count > 0)
+                {
+                    try
+                    {
+                        HttpFileCollectionBase files = Request.Files;
 
-                return RedirectToAction("Index");
+                        HttpPostedFileBase file = files[0];
+                        string fileName = file.FileName;
+
+                        // create the uploads folder if it doesn't exist
+                        Directory.CreateDirectory(Server.MapPath("~/UploadedFiles/"));
+                        string path = Path.Combine(Server.MapPath("~/UploadedFiles/"), fileName);
+                        file.SaveAs(path);
+                        a.photo = fileName;
+                    }
+                    catch (Exception e)
+                    {
+
+                    }
+                }
+                else
+                {
+                    a.photo = collection.Get("photo1");
+                }
+
+                var stringContent = new StringContent(JsonConvert.SerializeObject(a), Encoding.UTF8, "application/json");
+
+                HttpClient client = new HttpClient();
+                HttpResponseMessage response = await client.PostAsync("http://localhost:8080/SpringMVC/servlet/updateAchat", stringContent);
+                response.EnsureSuccessStatusCode();
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.result = response;
+                    return View(ViewBag.result);
+                }
+
             }
             catch
             {
@@ -194,6 +287,45 @@ namespace WebPi.Controllers
             {
                 return RedirectToAction("Index");
             }
+        }
+
+        public async Task<JsonResult> Searchs(FormCollection collection)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response;
+            string city = collection.Get("city");
+            string titre = collection.Get("titre");
+            if ( (titre == "" || titre ==null))
+            {
+                if (city == "a")
+                {
+                    response = await client.GetAsync("http://localhost:8080/SpringMVC/servlet/allAchat/");
+                }
+                else
+                {
+                    response = await client.GetAsync("http://localhost:8080/SpringMVC/servlet/searchAchatC/" + city);
+                }
+            }
+            else
+            {
+                response = await client.GetAsync("http://localhost:8080/SpringMVC/servlet/searchAchatTC/" + titre+"/"+city );
+            }
+
+            response.EnsureSuccessStatusCode();
+
+            if (response.IsSuccessStatusCode)
+            {
+                var data = await response.Content.ReadAsStringAsync();
+                var table = JsonConvert.DeserializeObject<IEnumerable<Achat>>(data);
+
+                return Json(table, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json("nothing!", JsonRequestBehavior.AllowGet);
+            }
+
+            
         }
     }
 }
